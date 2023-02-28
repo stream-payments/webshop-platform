@@ -1,0 +1,22 @@
+$ next build
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+info  - Linting and checking validity of types...
+Failed to compile.
+
+./src/modules/layout/components/dropdown-menu/index.tsx:38:19
+Type error: Type '{ children: string; className: string; onClick: () => Promise<boolean>; }' is not assignable to type 'IntrinsicAttributes & CleanProps<"button", ButtonPropsWeControl> & OurProps<"button", ButtonRenderPropArg> & { ...; } & { ...; }'.
+  Property 'onClick' does not exist on type 'IntrinsicAttributes & CleanProps<"button", ButtonPropsWeControl> & OurProps<"button", ButtonRenderPropArg> & { ...; } & { ...; }'.
+
+[0m [90m 36 | [39m                    [32m"relative h-full flex items-center transition-all ease-out duration-200"[39m[0m
+[0m [90m 37 | [39m                  )}[0m
+[0m[31m[1m>[22m[39m[90m 38 | [39m                  onClick[33m=[39m{() [33m=>[39m push([32m"/store"[39m)}[0m
+[0m [90m    | [39m                  [31m[1m^[22m[39m[0m
+[0m [90m 39 | [39m                [33m>[39m[0m
+[0m [90m 40 | [39m                  [33mMenu[39m[0m
+[0m [90m 41 | [39m                [33m<[39m[33m/[39m[33mPopover[39m[33m.[39m[33mButton[39m[33m>[39m[0m
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

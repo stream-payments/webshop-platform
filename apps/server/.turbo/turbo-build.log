@@ -1,0 +1,2 @@
+$ babel src -d dist --extensions ".ts,.js"
+Successfully compiled 0 files with Babel (3ms).
