@@ -2,25 +2,24 @@ const dotenv = require('dotenv')
 
 let ENV_FILE_NAME = '';
 switch (process.env.NODE_ENV) {
-	case 'production':
-		ENV_FILE_NAME = '.env.production';
-		break;
-	case 'staging':
-		ENV_FILE_NAME = '.env.staging';
-		break;
-	case 'test':
-		ENV_FILE_NAME = '.env.test';
-		break;
-	case 'development':
-	default:
-		ENV_FILE_NAME = '.env';
-		break;
+    case 'production':
+        ENV_FILE_NAME = '.env.production';
+        break;
+    case 'staging':
+        ENV_FILE_NAME = '.env.staging';
+        break;
+    case 'test':
+        ENV_FILE_NAME = '.env.test';
+        break;
+    case 'development':
+    default:
+        ENV_FILE_NAME = '.env';
+        break;
 }
 
 try {
-	dotenv.config({ path: process.cwd() + '/' + ENV_FILE_NAME });
-} catch (e) {
-}
+    dotenv.config({ path: process.cwd() + '/' + ENV_FILE_NAME });
+} catch (e) {}
 
 // CORS when consuming Medusa from admin
 const ADMIN_CORS = process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001";
@@ -30,10 +29,10 @@ const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
 
 // Database URL (here we use a local database called medusa-development)
 const DATABASE_URL =
-	process.env.DATABASE_URL || "postgres://localhost/medusa-store";
+    process.env.DATABASE_URL || "postgres:////qmnsghzwlurqgn:a4e6019b1198a05582bc4cc030429ba5c90225dab0b2411866c43b2b9222f74f@ec2-54-157-79-121.compute-1.amazonaws.com:5432/database";
 
 // Medusa uses Redis, so this needs configuration as well
-const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
+const REDIS_URL = process.env.REDIS_URL || "redis://default:0nqqt4gqS8xgqygrIeh8DuBgWG0QhK7unEnBgpt1BRgNOOk3gUfnPc6IHs5ZMBEK@@ydh2k0.stackhero-network.com:6379";
 
 // Stripe keys
 const STRIPE_API_KEY = process.env.STRIPE_API_KEY || "";
@@ -41,44 +40,44 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || "";
 
 // This is the place to include plugins. See API documentation for a thorough guide on plugins.
 const plugins = [
-	`medusa-fulfillment-manual`,
-	`medusa-payment-manual`,
-	{
-		resolve: `medusa-file-spaces`,
-		options: {
-			spaces_url: process.env.SPACE_URL,
-			bucket: process.env.SPACE_BUCKET,
-			endpoint: process.env.SPACE_ENDPOINT,
-			access_key_id: process.env.SPACE_ACCESS_KEY_ID,
-			secret_access_key: process.env.SPACE_SECRET_ACCESS_KEY,
-		},
-	},
-	{
-		resolve: `medusa-plugin-sendgrid`,
-		options: {
-			api_key: process.env.SENDGRID_API_KEY,
-			from: process.env.SENDGRID_FROM,
-			order_placed_template: process.env.SENDGRID_ORDER_PLACED_ID,
-		},
-	},
-	// Uncomment to add Stripe support.
-	// You can create a Stripe account via: https://stripe.com
-	{
-	  resolve: `medusa-payment-stripe`,
-	  options: {
-	    api_key: STRIPE_API_KEY,
-	    // webhook_secret: STRIPE_WEBHOOK_SECRET,
-	  },
-	},
+    `medusa-fulfillment-manual`,
+    `medusa-payment-manual`,
+    {
+        resolve: `medusa-file-spaces`,
+        options: {
+            spaces_url: process.env.SPACE_URL,
+            bucket: process.env.SPACE_BUCKET,
+            endpoint: process.env.SPACE_ENDPOINT,
+            access_key_id: process.env.SPACE_ACCESS_KEY_ID,
+            secret_access_key: process.env.SPACE_SECRET_ACCESS_KEY,
+        },
+    },
+    {
+        resolve: `medusa-plugin-sendgrid`,
+        options: {
+            api_key: process.env.SENDGRID_API_KEY,
+            from: process.env.SENDGRID_FROM,
+            order_placed_template: process.env.SENDGRID_ORDER_PLACED_ID,
+        },
+    },
+    // Uncomment to add Stripe support.
+    // You can create a Stripe account via: https://stripe.com
+    {
+        resolve: `medusa-payment-stripe`,
+        options: {
+            api_key: STRIPE_API_KEY,
+            // webhook_secret: STRIPE_WEBHOOK_SECRET,
+        },
+    },
 ];
 
 module.exports = {
-	projectConfig: {
-		redis_url: REDIS_URL,
-		database_url: DATABASE_URL,
-		database_type: "postgres",
-		store_cors: STORE_CORS,
-		admin_cors: ADMIN_CORS,
-	},
-	plugins,
+    projectConfig: {
+        redis_url: REDIS_URL,
+        database_url: DATABASE_URL,
+        database_type: "postgres",
+        store_cors: STORE_CORS,
+        admin_cors: ADMIN_CORS,
+    },
+    plugins,
 };
