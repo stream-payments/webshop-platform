@@ -1,6 +1,7 @@
 import clsx from "clsx"
 import { useCollections } from "medusa-react"
 import Link from "next/link"
+import CountrySelect from "../country-select"
 
 const FooterNav = () => {
   const { collections } = useCollections()
@@ -10,12 +11,12 @@ const FooterNav = () => {
       <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between">
         <div>
           <Link href="/">
-            <a className="text-xl-semi uppercase">Demo webshop</a>
+            <a className="text-xl-semi uppercase">Acme</a>
           </Link>
         </div>
         <div className="text-small-regular grid grid-cols-2 gap-x-16">
           <div className="flex flex-col gap-y-2">
-            <span className="text-base-semi">Collection</span>
+            <span className="text-base-semi">Collections</span>
             <ul
               className={clsx("grid grid-cols-1 gap-y-2", {
                 "grid-cols-2": (collections?.length || 0) > 4,
@@ -31,30 +32,33 @@ const FooterNav = () => {
             </ul>
           </div>
           <div className="flex flex-col gap-y-2">
-            <span className="text-base-semi">Over ons</span>
+            <span className="text-base-semi">Medusa</span>
             <ul className="grid grid-cols-1 gap-y-2">
               <li>
                 <a
-                  href="#"
+                  href="https://github.com/medusajs"
+                  target="_blank"
                   rel="noreferrer"
                 >
-                  Onze webshop
+                  GitHub
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://docs.medusajs.com"
+                  target="_blank"
                   rel="noreferrer"
                 >
-                  Verzending en retourneren
+                  Documentation
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://github.com/medusajs/nextjs-starter-medusa"
+                  target="_blank"
                   rel="noreferrer"
                 >
-                  Contact
+                  Source code
                 </a>
               </li>
             </ul>
@@ -63,8 +67,11 @@ const FooterNav = () => {
       </div>
       <div className="flex flex-col-reverse gap-y-4 justify-center xsmall:items-center xsmall:flex-row xsmall:items-end xsmall:justify-between">
         <span className="text-xsmall-regular text-gray-500">
-          © Copyright {new Date().getFullYear()} Aaron van den Berg
+          © Copyright 2022 ACME
         </span>
+        <div className="min-w-[316px] flex xsmall:justify-end">
+          <CountrySelect />
+        </div>
       </div>
     </div>
   )

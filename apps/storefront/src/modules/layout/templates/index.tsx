@@ -6,7 +6,6 @@ const Layout: React.FC = ({ children }) => {
   return (
     <div>
       <Nav />
-      {/* @ts-expect-error */}
       <main className="relative">{children}</main>
       <Footer />
     </div>

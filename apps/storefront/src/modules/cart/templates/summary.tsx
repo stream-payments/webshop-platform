@@ -13,7 +13,7 @@ const Summary = ({ cart }: SummaryProps) => {
       <CartTotals cart={cart} />
       <Link href="/checkout">
         <a>
-          <Button>Afrekenen</Button>
+          <Button>Go to checkout</Button>
         </a>
       </Link>
     </div>

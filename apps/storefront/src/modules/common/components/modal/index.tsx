@@ -67,7 +67,6 @@ const Title: React.FC = ({ children }) => {
 
   return (
     <Dialog.Title className="flex items-center justify-between">
-      {/* @ts-expect-error */}
       <div className="text-large-semi">{children}</div>
       <div>
         <button onClick={close}>
@@ -81,19 +80,16 @@ const Title: React.FC = ({ children }) => {
 const Description: React.FC = ({ children }) => {
   return (
     <Dialog.Description className="flex text-small-regular text-gray-700 items-center justify-center pt-2 pb-4 h-full">
-      {/* @ts-expect-error */}
       {children}
     </Dialog.Description>
   )
 }
 
 const Body: React.FC = ({ children }) => {
-  {/* @ts-expect-error */}
   return <div className="flex-1">{children}</div>
 }
 
 const Footer: React.FC = ({ children }) => {
-  {/* @ts-expect-error */}
   return <div className="flex items-center justify-end gap-x-4">{children}</div>
 }
 

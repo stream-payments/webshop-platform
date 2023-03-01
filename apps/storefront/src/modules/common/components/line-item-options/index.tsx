@@ -8,7 +8,7 @@ const LineItemOptions = ({ variant }: LineItemOptionsProps) => {
       {variant.options.map((option) => {
         const optionName =
           variant.product.options.find((opt) => opt.id === option.option_id)
-            ?.title || "Optie"
+            ?.title || "Option"
         return (
           <div key={option.id}>
             <span>

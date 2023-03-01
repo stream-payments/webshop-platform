@@ -43,40 +43,41 @@ const Register = () => {
 
   return (
     <div className="max-w-sm flex flex-col items-center mt-12">
-      <h1 className="text-large-semi uppercase mb-6">Word een member</h1>
+      <h1 className="text-large-semi uppercase mb-6">Become a Acme Member</h1>
       <p className="text-center text-base-regular text-gray-700 mb-4">
-        Maak uw Member profiel aan, en krijg toegang tot een verbeterde shopping ervaring.
+        Create your Acme Member profile, and get access to an enhanced shopping
+        experience.
       </p>
       <form className="w-full flex flex-col" onSubmit={onSubmit}>
         <div className="flex flex-col w-full gap-y-2">
           <Input
-            label="Voornaam"
-            {...register("first_name", { required: "Voornaam is verplicht" })}
+            label="First name"
+            {...register("first_name", { required: "First name is required" })}
             autoComplete="given-name"
             errors={errors}
           />
           <Input
-            label="Achternaam"
-            {...register("last_name", { required: "Achternaam is verplicht" })}
+            label="Last name"
+            {...register("last_name", { required: "Last name is required" })}
             autoComplete="family-name"
             errors={errors}
           />
           <Input
             label="Email"
-            {...register("email", { required: "Email is verplicht" })}
+            {...register("email", { required: "Email is required" })}
             autoComplete="email"
             errors={errors}
           />
           <Input
-            label="Telefoonnummer"
+            label="Phone"
             {...register("phone")}
             autoComplete="tel"
             errors={errors}
           />
           <Input
-            label="Wachtwoord"
+            label="Password"
             {...register("password", {
-              required: "Wachtwoord is verplicht",
+              required: "Password is required",
             })}
             type="password"
             autoComplete="new-password"
@@ -91,25 +92,25 @@ const Register = () => {
           </div>
         )}
         <span className="text-center text-gray-700 text-small-regular mt-6">
-          Door een account aan te maken, gaat u akkoord met de &apos;s{" "}
+          By creating an account, you agree to Acme&apos;s{" "}
           <Link href="/content/privacy-policy">
             <a className="underline">Privacy Policy</a>
           </Link>{" "}
-          en{" "}
+          and{" "}
           <Link href="/content/terms-of-use">
             <a className="underline">Terms of Use</a>
           </Link>
           .
         </span>
-        <Button className="mt-6">Registeren</Button>
+        <Button className="mt-6">Join</Button>
       </form>
       <span className="text-center text-gray-700 text-small-regular mt-6">
-        Al een account?{" "}
+        Already a member?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
           className="underline"
         >
-          Inloggen
+          Sign in
         </button>
         .
       </span>

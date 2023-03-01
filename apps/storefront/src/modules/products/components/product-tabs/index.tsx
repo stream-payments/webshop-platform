@@ -14,11 +14,11 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = useMemo(() => {
     return [
       {
-        label: "Product informatie",
+        label: "Product Information",
         component: <ProductInfoTab product={product} />,
       },
       {
-        label: "Verzending en retourneren",
+        label: "Shipping & Returns",
         component: <ShippingInfoTab />,
       },
     ]
@@ -37,7 +37,7 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
                     "text-left uppercase text-small-regular pb-2 -mb-px border-b border-gray-200 transition-color duration-150 ease-in-out",
                     {
                       "border-b border-gray-900": selected,
-                    },
+                    }
                   )
                 }
               >
@@ -62,11 +62,11 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
       <div className="grid grid-cols-2 gap-x-8">
         <div className="flex flex-col gap-y-4">
           <div>
-            <span className="font-semibold">Materiaal</span>
+            <span className="font-semibold">Material</span>
             <p>{product.material ? product.material : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Herkomst</span>
+            <span className="font-semibold">Country of origin</span>
             <p>{product.origin_country ? product.origin_country : "-"}</p>
           </div>
           <div>
@@ -76,11 +76,11 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
         </div>
         <div className="flex flex-col gap-y-4">
           <div>
-            <span className="font-semibold">Gewicht</span>
+            <span className="font-semibold">Weight</span>
             <p>{product.weight ? `${product.weight} g` : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Afmetingen</span>
+            <span className="font-semibold">Dimensions</span>
             <p>
               {product.length && product.width && product.height
                 ? `${product.length}L x ${product.width}W x ${product.height}H`
@@ -105,28 +105,31 @@ const ShippingInfoTab = () => {
         <div className="flex items-start gap-x-2">
           <FastDelivery />
           <div>
-            <span className="font-semibold">Snelle levering</span>
+            <span className="font-semibold">Fast delivery</span>
             <p className="max-w-sm">
-              Uw pakket komt binnen 3-5 werkdagen aan op uw afhaallocatie locatie of in het comfort van uw huis.
+              Your package will arrive in 3-5 business days at your pick up
+              location or in the comfort of your home.
             </p>
           </div>
         </div>
         <div className="flex items-start gap-x-2">
           <Refresh />
           <div>
-            <span className="font-semibold">Eenvoudige ruilingen</span>
+            <span className="font-semibold">Simple exchanges</span>
             <p className="max-w-sm">
-              Is de pasvorm niet helemaal goed? Geen zorgen - we ruilen uw product om voor een nieuw exemplaar.
+              Is the fit not quite right? No worries - we&apos;ll exchange your
+              product for a new one.
             </p>
           </div>
         </div>
         <div className="flex items-start gap-x-2">
           <Back />
           <div>
-            <span className="font-semibold">Gemakkelijk terugsturen</span>
+            <span className="font-semibold">Easy returns</span>
             <p className="max-w-sm">
-              Stuur uw product gewoon terug en wij betalen u uw geld terug. Zonder vragen te stellen - we doen ons best
-              om ervoor te zorgen dat uw retourzending probleemloos verloopt.
+              Just return your product and we&apos;ll refund your money. No
+              questions asked – we&apos;ll do our best to make sure your return
+              is hassle-free.
             </p>
           </div>
         </div>

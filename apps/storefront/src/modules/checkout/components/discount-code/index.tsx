@@ -66,7 +66,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
           setError(
             "discount_code",
             {
-              message: "Code is ongeldig",
+              message: "Code is invalid",
             },
             {
               shouldFocus: true,
@@ -91,7 +91,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   return (
     <div className="w-full bg-white flex flex-col">
       <div className="mb-4">
-        <h3 className="text-base-semi">Kortingscode</h3>
+        <h3 className="text-base-semi">Discount</h3>
       </div>
       <div className="text-small-regular">
         {appliedDiscount ? (
@@ -107,7 +107,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 disabled={isLoading}
               >
                 <Trash size={16} />
-                <span className="sr-only">Cadeaubon verwijderen uit bestelling</span>
+                <span className="sr-only">Remove gift card from order</span>
               </button>
             </div>
           </div>
@@ -127,7 +127,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                   disabled={isLoading}
                   isLoading={isLoading}
                 >
-                  Toepassen
+                  Apply
                 </Button>
               </div>
             </div>

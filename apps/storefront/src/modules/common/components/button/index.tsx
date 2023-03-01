@@ -28,7 +28,6 @@ const Button = ({
         className
       )}
     >
-      {/* @ts-expect-error */}
       {isLoading ? <Spinner /> : children}
     </button>
   )

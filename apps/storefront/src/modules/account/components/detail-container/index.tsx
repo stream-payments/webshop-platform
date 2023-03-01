@@ -14,7 +14,6 @@ const Detail: React.FC<DetailProps> & {
   return (
     <div>
       <h2 className="text-large-semi mb-2">{title}</h2>
-      {/* @ts-expect-error */}
       <div className="flex flex-col gap-y-4 text-small-regular">{children}</div>
     </div>
   )
@@ -24,7 +23,6 @@ const SubDetail: React.FC<SubDetailProps> = ({ title, children }) => {
   return (
     <div className="flex flex-col">
       {title && <span className="text-base-semi">{title}</span>}
-      {/* @ts-expect-error */}
       <div className="text-small-regular">{children}</div>
     </div>
   )

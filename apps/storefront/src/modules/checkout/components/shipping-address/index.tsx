@@ -22,9 +22,9 @@ const ShippingAddress = () => {
         {({ register, formState: { errors, touchedFields } }) => (
           <div className="grid grid-cols-1 gap-y-2">
             <Input
-              label="E-mail"
+              label="Email"
               {...register("email", {
-                required: "E-mail is vereist",
+                required: "Email is required",
                 pattern: emailRegex,
               })}
               autoComplete="email"
@@ -33,18 +33,18 @@ const ShippingAddress = () => {
             />
             <div className="grid grid-cols-2 gap-x-2">
               <Input
-                label="Voornaam"
+                label="First name"
                 {...register("shipping_address.first_name", {
-                  required: "Voornaam is verplicht",
+                  required: "First name is required",
                 })}
                 autoComplete="given-name"
                 errors={errors}
                 touched={touchedFields}
               />
               <Input
-                label="Achternaam"
+                label="Last name"
                 {...register("shipping_address.last_name", {
-                  required: "Achternaam is verplicht",
+                  required: "Last name is required",
                 })}
                 autoComplete="family-name"
                 errors={errors}
@@ -52,23 +52,23 @@ const ShippingAddress = () => {
               />
             </div>
             <Input
-              label="Bedrijfsnaam"
+              label="Company"
               {...register("shipping_address.company")}
               autoComplete="organization"
               errors={errors}
               touched={touchedFields}
             />
             <Input
-              label="Adres + huisnummer"
+              label="Address"
               {...register("shipping_address.address_1", {
-                required: "Adres + huisnummer is verplicht",
+                required: "Address is required",
               })}
               autoComplete="address-line1"
               errors={errors}
               touched={touchedFields}
             />
             <Input
-              label="Appartementen, suite, etc."
+              label="Apartments, suite, etc."
               {...register("shipping_address.address_2")}
               autoComplete="address-line2"
               errors={errors}
@@ -76,18 +76,18 @@ const ShippingAddress = () => {
             />
             <div className="grid grid-cols-[122px_1fr] gap-x-2">
               <Input
-                label="Postcode"
+                label="Postal code"
                 {...register("shipping_address.postal_code", {
-                  required: "Postcode is verplicht",
+                  required: "Postal code is required",
                 })}
                 autoComplete="postal-code"
                 errors={errors}
                 touched={touchedFields}
               />
               <Input
-                label="Plaats"
+                label="City"
                 {...register("shipping_address.city", {
-                  required: "Plaats is verplicht",
+                  required: "City is required",
                 })}
                 autoComplete="address-level2"
                 errors={errors}
@@ -96,21 +96,21 @@ const ShippingAddress = () => {
             </div>
             <CountrySelect
               {...register("shipping_address.country_code", {
-                required: "Land is verplicht",
+                required: "Country is required",
               })}
               autoComplete="country"
               errors={errors}
               touched={touchedFields}
             />
             <Input
-              label="Provincie"
+              label="State / Province"
               {...register("shipping_address.province")}
               autoComplete="address-level1"
               errors={errors}
               touched={touchedFields}
             />
             <Input
-              label="Telefoonnummer"
+              label="Phone"
               {...register("shipping_address.phone")}
               autoComplete="tel"
               errors={errors}

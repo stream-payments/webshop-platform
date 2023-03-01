@@ -53,96 +53,22 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({ paymentSession }) => {
       return (
         <PayPalPaymentButton notReady={notReady} session={paymentSession} />
       )
-    case "stripe-ideal":
-      return (
-        <StripeIdealPaymentButton notReady={notReady} session={paymentSession} />
-      )
     default:
       return <Button disabled>Select a payment method</Button>
   }
 }
 
-const StripeIdealPaymentButton = ({
-                                    session,
-                                    notReady,
-                                  }: {
-  session: PaymentSession
-  notReady: boolean
-}) => {
-  const [disabled, setDisabled] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string | undefined>(
-    undefined,
-  )
-
-  const { cart } = useCart()
-  const { onPaymentCompleted } = useCheckout()
-
-  const stripe = useStripe()
-  const elements = useElements()
-  const idealBankElement = elements?.getElement("idealBank")
-
-  useEffect(() => {
-    if (!stripe || !elements) {
-      setDisabled(true)
-    } else {
-      setDisabled(false)
-    }
-  }, [stripe, elements])
-
-  const handlePayment = async () => {
-    setSubmitting(true)
-
-    if (!stripe || !elements || !idealBankElement || !cart) {
-      setSubmitting(false)
-      return
-    }
-
-    await stripe
-      .confirmIdealPayment(session.data.client_secret as string, {
-        payment_method: {
-          ideal: idealBankElement,
-        },
-        receipt_email: cart.email,
-        // Return URL where the customer should be redirected after the authorization.
-        return_url: window.location.href,
-      })
-      .then(function(result) {
-        if (result.error) {
-          console.log(result.error)
-          // Inform the customer that there was an error.
-        }
-      })
-  }
-
-  return (
-    <>
-      <Button
-        disabled={submitting || disabled || notReady}
-        onClick={handlePayment}
-      >
-        {submitting ? <Spinner /> : "Checkout"}
-      </Button>
-      {errorMessage && (
-        <div className="text-red-500 text-small-regular mt-2">
-          {errorMessage}
-        </div>
-      )}
-    </>
-  )
-}
-
 const StripePaymentButton = ({
-                               session,
-                               notReady,
-                             }: {
+  session,
+  notReady,
+}: {
   session: PaymentSession
   notReady: boolean
 }) => {
   const [disabled, setDisabled] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
-    undefined,
+    undefined
   )
 
   const { cart } = useCart()
@@ -239,15 +165,15 @@ const StripePaymentButton = ({
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || ""
 
 const PayPalPaymentButton = ({
-                               session,
-                               notReady,
-                             }: {
+  session,
+  notReady,
+}: {
   session: PaymentSession
   notReady: boolean
 }) => {
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
-    undefined,
+    undefined
   )
 
   const { cart } = useCart()
@@ -255,7 +181,7 @@ const PayPalPaymentButton = ({
 
   const handlePayment = async (
     _data: OnApproveData,
-    actions: OnApproveActions,
+    actions: OnApproveActions
   ) => {
     actions?.order
       ?.authorize()
@@ -309,7 +235,7 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
 
   return (
     <Button disabled={submitting || notReady} onClick={handlePayment}>
-      {submitting ? <Spinner /> : "Veilig betalen"}
+      {submitting ? <Spinner /> : "Checkout"}
     </Button>
   )
 }
